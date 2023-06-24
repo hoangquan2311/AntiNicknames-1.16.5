@@ -1,1 +1,5 @@
-# Anti-Nickname Fabric 1.16.5 mod
+# Anti-Cheat for my server
+Require Fabric loader to use
+List of cheat (so far):
+- Invalid character in names
+- NoComCrash prevent
