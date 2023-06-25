@@ -66,6 +66,9 @@ jar {
 	from("LICENSE") {
 		rename { "${it}_${project.archivesBaseName}"}
 	}
+	manifest {
+		attributes 'MixinConfigs': 'mixins.server.json'
+	}
 }
 
 // configure the maven publication

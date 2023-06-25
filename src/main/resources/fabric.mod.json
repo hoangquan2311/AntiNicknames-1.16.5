@@ -18,7 +18,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.dreamanticheat.home.AntiNickname"
+      "net.dreamanticheat.home.DreamAntiCheat"
     ]
   },
   "mixins": [
