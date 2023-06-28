@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.dreamanticheat.home.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+  ],
+  "client": [
+    "AntiLogAcc",
+    "AntiNoComCrash"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
