@@ -3,8 +3,8 @@
   "id": "anti-cheat",
   "version": "${version}",
 
-  "name": "Anti-Nickname",
-  "description": "My AntiCheat. Prevent from: invalid player name, nocomcrash lag ,..",
+  "name": "Radmin Anti Hack",
+  "description": "Anti-Hack in Radmin server, for details go to my github repository.",
   "authors": [
     "Dream_Da_Vang"
   ],
@@ -22,7 +22,7 @@
     ]
   },
   "mixins": [
-    "anti-nickname.mixins.json"
+    "anti-cheat.mixins.json"
   ],
 
   "depends": {
