@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "anti-cheat",
+  "version": "${version}",
+
+  "name": "Radmin Anti Hack",
+  "description": "Anti-Hack in Radmin server, for details go to my github repository.",
+  "authors": [
+    "Dream_Da_Vang"
+  ],
+  "contact": {
+    "sources": "https://github.com/hoangquan2311/DreamAntiCheat-1.16.5"
+  },
+
+  "license": "MIT",
+  "icon": "assets/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.dreamanticheat.home.DreamAntiCheat"
+    ]
+  },
+  "mixins": [
+    "anti-cheat.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.5"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
