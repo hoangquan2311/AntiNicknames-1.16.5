@@ -18,7 +18,6 @@ import net.minecraft.util.math.Vec3d;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 public class CrashCommand {
     public static void register(){
@@ -56,11 +55,11 @@ public class CrashCommand {
             return 0;
         }
         if(targetPlayer.getServer().isHost(targetPlayer.getGameProfile())){
-            senderPlayer.sendMessage(TextColor.text("Không thể crash chủ map.", Formatting.RED),false);
+            senderPlayer.sendMessage(TextColor.text("Không được crash chủ map.", Formatting.RED),false);
             return 0;
         }
         if(targetPlayer.getUuid().equals(DreamAntiCheat.DreamUUID)){
-            senderPlayer.sendMessage(TextColor.text("Tui làm ra mod này đó sao mà crash tui được =)).", Formatting.RED),false);
+            senderPlayer.sendMessage(TextColor.text("Ghê vậy sao :0", Formatting.RED),false);
             return 0;
         }
         Vec3d pos = targetPlayer.getPos();
@@ -70,9 +69,8 @@ public class CrashCommand {
             targetPlayer.networkHandler.sendPacket(packet);
             if(i%10==0)
             senderPlayer.sendMessage(TextColor.text(i*10+"/1000 packets",Formatting.RED), false);
-            Thread.sleep(100);
         }
-        senderPlayer.sendMessage(TextColor.text("Send packet hoàn tất, người chơi đã bị crash.", Formatting.GREEN),false);
+        senderPlayer.sendMessage(TextColor.text("Send packet hoàn tất, người chơi đã bị crash game.\nMod by Dream_Da_Vang", Formatting.GREEN),false);
         if(!DreamAntiCheat.MC.getServer().isHost(senderPlayer.getGameProfile())){
             DreamAntiCheat.sendMsgHost(TextColor.text(senderPlayer.getName().getString()+" đã /crash người chơi "+target, Formatting.RED));
         }

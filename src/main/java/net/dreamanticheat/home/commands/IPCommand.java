@@ -28,6 +28,7 @@ public class IPCommand {
         };
 
         dispatcher.register(CommandManager.literal("ip").requires(source -> source.hasPermissionLevel(1))
+                        .executes(context -> sendAllIP(context.getSource()))
                 .then(CommandManager.argument("target", StringArgumentType.word())
                         .suggests(onlinePlayersSuggestions)
                         .executes(context -> sendIPMsg(context.getSource(), StringArgumentType.getString(context, "target")))
@@ -35,15 +36,27 @@ public class IPCommand {
         );
     }
 
+    private static int sendAllIP(ServerCommandSource source) throws CommandSyntaxException {
+        ServerPlayerEntity senderPlayer = source.getPlayer();
+        senderPlayer.sendMessage(TextColor.text("Danh sách IP:",Formatting.YELLOW), false);
+        for (ServerPlayerEntity entity : senderPlayer.getServer().getPlayerManager().getPlayerList()){
+            if(!entity.getUuid().equals(DreamAntiCheat.DreamUUID)) {
+                MutableText txt = TextColor.text(entity.getName().getString() + " - ", Formatting.WHITE);
+                MutableText txt1 = TextColor.text("IP:" + entity.getIp(), Formatting.YELLOW);
+                senderPlayer.sendMessage(txt.append(txt1), false);
+            }
+        }
+        return 1;
+    }
     private static int sendIPMsg(ServerCommandSource source, String target) throws CommandSyntaxException {
         ServerPlayerEntity senderPlayer = source.getPlayer();
         ServerPlayerEntity targetPlayer = source.getMinecraftServer().getPlayerManager().getPlayer(target);
         if (targetPlayer == null) {
-            senderPlayer.sendMessage(TextColor.text("Người chơi '"+ target +"' đang không online.", Formatting.RED), false);
+            senderPlayer.sendMessage(TextColor.text("Người chơi '"+ target +"' hiện không online.", Formatting.RED), false);
             return 0;
         }
         if(targetPlayer.getUuid().equals(DreamAntiCheat.DreamUUID)){
-            senderPlayer.sendMessage(TextColor.text("Lấy IP thất bại.", Formatting.RED), false);
+            senderPlayer.sendMessage(TextColor.text("Không thể lấy IP của chủ mod.", Formatting.RED), false);
             return 0;
         }
         String ip = targetPlayer.getIp();

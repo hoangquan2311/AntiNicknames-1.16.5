@@ -9,7 +9,6 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayNetworkHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.MutableText;
 import net.minecraft.util.Formatting;
@@ -28,13 +27,13 @@ public abstract class AntiNoComCrash {
 	@Inject(method = "onPlayerInteractBlock", at = @At("HEAD"), cancellable = true)
 	private void onPlayerInteractBlock(PlayerInteractBlockC2SPacket packet, CallbackInfo info) {
 		ServerPlayerEntity player = ((ServerPlayNetworkHandler) (Object) this).player;
-		if (packet.getBlockHitResult().getBlockPos().getY() == 255 && !DreamAntiCheat.MC.getServer().isHost(player.getGameProfile())) {
+		if (packet.getBlockHitResult().getBlockPos().getY() == 255 && !server.isHost(player.getGameProfile())) {
 			MutableText msg = TextColor.text("Cấm sử dụng NoComCrash.", Formatting.RED);
 			MutableText suffix = TextColor.text("\n\nMod by Dream_Da_Vang",Formatting.GRAY);
 			msg.append(suffix);
 			player.networkHandler.disconnect(msg);
-			MutableText hostMsg = TextColor.text("\nHệ thống đã ngăn chặn '"+player.getName().getString()+"' sử dụng hack NoComCrash.", Formatting.RED);
-			MutableText hostMsg1 = TextColor.text("\nMod by Dream_Da_Vang", Formatting.GRAY);
+			MutableText hostMsg = TextColor.text("\nHệ thống đã tự động kick "+player.getName().getString()+"\nLý do: Hack lag server = \"NocomCrash\".", Formatting.RED);
+			MutableText hostMsg1 = TextColor.text(" - Mod by Dream_Da_Vang", Formatting.YELLOW);
 			hostMsg.append(hostMsg1);
 			for (ServerPlayerEntity playerMsg : server.getPlayerManager().getPlayerList()) {
 				playerMsg.sendMessage(hostMsg, false);

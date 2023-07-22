@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Radmin Anti Hack",
-  "description": "Shields for your Radmin LAN server, for details please go to my github repository.",
+  "description": "Anti-Hack in Radmin server, for details go to my github repository.",
   "authors": [
     "Dream_Da_Vang"
   ],

@@ -9,6 +9,9 @@
     "AntiLogAcc",
     "AntiNoComCrash"
   ],
+  "server": [
+
+  ],
   "injectors": {
     "defaultRequire": 1
   }
